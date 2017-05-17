@@ -1,0 +1,22 @@
+
+
+lsblk
+#xvdf is volume name
+sudo file -s /dev/xvdg
+
+sudo mkfs -t ext4 /dev/xvdg
+
+sudo mkdir /data1
+
+sudo mount /dev/xvdf /data1/
+
+cd /data1
+df -h 
+
+sudo cp /etc/fstab /etc/fstab.bak
+
+vim /etc/fstab
+#device_name mount_point file_system_type fs_mntops fs_freq fs_passno
+/dev/xvdg       /data1   ext4    defaults,nofail        0       2
+
+sudo mount -a
